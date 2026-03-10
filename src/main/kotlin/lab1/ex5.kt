@@ -29,9 +29,6 @@ fun serverSocket(port : Int){
     }
 }
 
-
-
-
 fun main() {
     serverSocket(12345)
 }

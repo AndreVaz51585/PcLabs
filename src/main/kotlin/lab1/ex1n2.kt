@@ -15,7 +15,7 @@ fun startAndObserve (thread : Thread){
             println("<${System.currentTimeMillis()}> <${thread.name}> <$curr>")
             prevState = curr
         }
-            Thread.sleep(500)
+            Thread.sleep(100)
     }
 
     println("<${System.currentTimeMillis()}> <${thread.name}> <${thread.state}> ")
