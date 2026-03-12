@@ -4,7 +4,7 @@ fun parallelSum(values: IntArray, nBlocks: Int): Long{
 
     val partitionSize = values.size/ nBlocks // gives us the total quantity of the numbers off each block
 
-    val partials = LongArray(nBlocks)
+    val partials = LongArray(nBlocks) // existe memória partilhada nesta região, todas as threads acedem
 
     val threads = Array(nBlocks){ i ->
         Thread({
@@ -16,6 +16,7 @@ fun parallelSum(values: IntArray, nBlocks: Int): Long{
 
                 }
             partials[i] = localCount
+            println(partials[i])
         },"count-partition $i")
 
     }
@@ -24,4 +25,14 @@ fun parallelSum(values: IntArray, nBlocks: Int): Long{
     threads.forEach { it.join() }
 
     return partials.sum()
+}
+
+fun main(){
+
+    val value =
+        parallelSum(intArrayOf(15,15,15,15,10,10,10,10,10), 4)
+
+
+    println(value)
+
 }
